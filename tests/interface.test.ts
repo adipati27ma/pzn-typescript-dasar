@@ -83,4 +83,37 @@ describe('Interface', () => {
 
     console.info(person1.sayHello('Brody'));
   });
+
+  // Intersection Type
+  it('should support intersection types', () => {
+    interface HasName {
+      name: string;
+    }
+
+    interface HasId {
+      id: string;
+    }
+
+    type Domain = HasId & HasName;
+
+    const domain1: Domain = {
+      id: '1',
+      name: 'Adip',
+    };
+    console.info(domain1);
+  });
+
+  // Type Assertion
+  it('should support type assertions', function () {
+    const person: any = {
+      name: 'Eko',
+      age: 30,
+    };
+
+    const person2: Person = person as Person; // konversi nya harus hati-hati (karena jika nilai tidak ada tidak error, tapi begitu diakses error)
+    console.info(person2);
+    // person2.sayHello("Budi");
+
+    console.info(person2);
+  });
 });
